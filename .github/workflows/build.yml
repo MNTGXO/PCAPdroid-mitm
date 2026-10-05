@@ -11,6 +11,7 @@ jobs:
   release:
     name: Build unsigned release APKs
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout (with submodules)
         uses: actions/checkout@v6
@@ -25,12 +26,12 @@ jobs:
 
       # Chaquopy requires a matching Python interpreter on the build host.
       - name: Set up Python 3.13
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.13'
 
       - name: Set up Gradle
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v6
 
       - name: Assemble release APKs
         run: ./gradlew assembleRelease --stacktrace
